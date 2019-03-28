@@ -1,0 +1,21 @@
+#对外暴露微服务实例名
+spring:
+  application:
+    name: eshop-zuul
+  #将采样比例设置为 1.0，也就是全部都需要被采集
+  sleuth: 
+    sampler: 
+      probability: 1.0  
+#指定服务注册中心的位置
+eureka:
+  client: 
+    service-url:
+      defaultZone: http://localhost:9000/eureka/
+#路由网关请求流转控制
+zuul: 
+  ignored-services: '*'
+  prefix: /qsx
+  routes: 
+    shixun: 
+      path: /sx/**
+      serviceId: service-home
