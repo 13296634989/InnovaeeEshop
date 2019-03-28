@@ -1,17 +1,17 @@
+#对外暴露的微服务的实例名
 spring:
   application:
     name: eshop-turbine
-server:
-  port: 11006
-security:
-  basic:
-    enabled: false
 turbine:
+  #指定聚合那些集群，默认为default
   aggregator:
     clusterConfig: default
-  appConfig: service-home
+  #指定了需要收集监控信息的服务名
+  appConfig: service-home   
+  #指定集群名称
   clusterNameExpression: new String("default")
+#指定了服务注册中心的位置
 eureka:
-  client:
+  client: 
     serviceUrl:
-      defaultZone: http://192.168.7.11:9001/eureka/,http://192.168.7.11:9002/eureka/
+      defaultZone: http://localhost:9000/eureka/
